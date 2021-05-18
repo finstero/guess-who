@@ -2,6 +2,7 @@ console.log('Here are all the available people:', people);
 
 $(readyNow);
 
+//append person image to dom on load
 function readyNow(){
     // console.log('hello jQ');
     for (let i=0; i<people.length; i++){
@@ -16,7 +17,7 @@ function readyNow(){
         // console.log('hopefully person object', $(toAppend).data('person', person));
     }
     console.log('grabbing githubname data from image', $('img').data()); //only grabs first images data and I don't know why
-
+//append random name to be matched with image to DOM at top
     $('#randomName').append(randomName());
     $('#appendPics').on('click', '.imgDiv', handlePicClick);
 
@@ -26,6 +27,7 @@ function readyNow(){
 //     return Math.floor(Math.random() * (1 + max - min) + min);
 // }
 
+//appends random name to DOM, adds github username data to appended span
 function randomName(){
     $('#randomName').empty();
     let randomIndex = Math.floor(Math.random() * (1 + people.length-1));
@@ -39,6 +41,10 @@ function randomName(){
     return toAppend;
 }
 
+//when picture clicks, compares text name's github username to image github username
+//gives user correct or incorrect feedback
+//on correct, game will keep going
+//on incorrect, allows more guesses until correct
 function handlePicClick(){
     // console.log('clicked pic!');
     // console.log('logging this', $(this));
